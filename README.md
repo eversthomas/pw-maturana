@@ -19,9 +19,38 @@
 
 ## output strategy
 
+In the config.php a head.inc is prepended and a foot.inc is appended.
+
 ```php
 prependTemplateFile = 'inc/head.inc';
 appendTemplateFile = 'inc/foot.inc';
+```
+
+In addition i have a header.php, a home-header.php (frontpage), a sidebar.php.
+
+See here the home.php with included cards Component:
+
+```php
+<?php include('inc/_header-home.php'); ?>
+
+<main role="main">
+	
+	<div class="cards">
+		<?php
+			foreach($page->cards as $card) {
+				echo "<div class=\"card\">";
+					echo "<img src='{$card->card_image->url}' alt='{$card->card_image->name}'>"; 
+					echo "<h3>" . $card->card_header . "</h3>";
+					echo "<p>" . $card->card_body . "</p>";
+					echo "<a class=\"button\" href=\"$card->card_link\">read more</a>";
+				echo "</div>";
+			}
+		?>
+	<article>
+		<h2><?php echo $title ?></h2>
+		<?php echo $page->pagebody; ?>
+	</article>
+</main>
 ```
 
 ## sass structure
