@@ -19,3 +19,34 @@
 ## why maturana?
 
 Wow, Humberto Maturana (born September 14, 1928) is a Chilean biologist and philosopher: https://en.wikipedia.org/wiki/Humberto_Maturana
+
+### sass structure
+
+'''
+// base
+@import 'base/config';
+@import 'base/mixins';
+@import 'base/base';
+@import 'base/fonts';
+@import 'base/typo';
+
+// layout
+@import 'layout/layout';
+
+// elements
+@import 'elements/hamburger';
+@import 'elements/navigation';
+@import 'elements/form';
+@import 'elements/link';
+@import 'elements/button';
+@import 'elements/list';
+@import 'elements/card';
+@import 'elements/code';
+@import 'elements/blockquote';
+@import 'elements/hero-image';
+
+// helpers
+@import 'helpers/screenreader';
+@import 'helpers/osano-cookie';
+@import 'helpers/helpers';
+'''
