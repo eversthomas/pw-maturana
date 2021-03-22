@@ -6,6 +6,7 @@
 * with or without sidebar
 * template for metainformations in head
 * a small card component
+* osano cookie consent integration
 
 
 ## use with
@@ -16,11 +17,14 @@
 * ProcessFileEdit | i often work direct in a browser - maybe you have to actualize the folderstructure in this module to work
 * repeater field
 
-## why maturana?
+## output strategy
 
-Wow, Humberto Maturana (born September 14, 1928) is a Chilean biologist and philosopher: https://en.wikipedia.org/wiki/Humberto_Maturana
+```php
+prependTemplateFile = 'inc/head.inc';
+appendTemplateFile = 'inc/foot.inc';
+```
 
-### sass structure
+## sass structure
 
 ```sass
 // base
@@ -50,3 +54,7 @@ Wow, Humberto Maturana (born September 14, 1928) is a Chilean biologist and phil
 @import 'helpers/osano-cookie';
 @import 'helpers/helpers';
 ```
+
+## why maturana?
+
+Wow, Humberto Maturana (born September 14, 1928) is a Chilean biologist and philosopher: https://en.wikipedia.org/wiki/Humberto_Maturana
