@@ -7,6 +7,7 @@
 * template for metainformations in head
 * a small card component
 * osano cookie consent integration
+* responsive navigation with a hamburger menu
 
 
 ## use with
@@ -16,6 +17,23 @@
 * MarkupMenuBuilder [http://processwire.com/talk/topic/4451-module-menu-builder/] | a beautiful menu module - single blog articles are pages and you maybe don't want to see them in an submenu
 * ProcessFileEdit | i often work direct in a browser - maybe you have to actualize the folderstructure in this module to work
 * repeater field
+
+## setup as a page
+
+You find a setup.php where you can define some fine variables. It's included before head.inc:
+
+```php
+<?php
+/**
+ * some site configurations
+ * 
+ */
+	$home	=	$pages->get("/"); // page url
+	$site_title = "MyHomepage"; // site title
+	$title = $page->title(); // page title
+	$body	=	$page->body; // full body
+?>
+```
 
 ## output strategy
 
@@ -53,6 +71,39 @@ See here the home.php with included cards Component:
 </main>
 ```
 
+## small blog function
+
+Just create a new page as a subpage of "blog" with the "article" template. Not elegant but simple for small use cases. See the blog.php:
+
+```php
+<?php include('inc/_header.php'); ?>
+
+<main role="main">
+	<article>
+		<h2><?php echo $page->title; ?></h2>
+		<p>Wilkommen in meinem Blog</p>
+		
+		<?php
+			$readmore = 'more';
+			// Render navigation for all child pages below this one
+			$features = $page->children("sort=-created");
+			foreach($features as $child) {
+			  echo "
+			  	<h3><a href='$child->url'>$child->title</a></h3>
+				$child->blog_excerpt<br>
+				<a href='$child->url' class='button'>$readmore</a><hr>
+				";
+			}
+		?>
+		
+	</article>
+</main>
+
+<aside role="complementary">
+	<?php include("inc/_blog-sidebar.php"); ?>
+</aside>
+```
+
 ## sass structure
 
 ```sass
@@ -83,6 +134,10 @@ See here the home.php with included cards Component:
 @import 'helpers/osano-cookie';
 @import 'helpers/helpers';
 ```
+
+## my use case
+
+I use processwire instead of a static homepage. This site-profile is a good base for me to start.
 
 ## why maturana?
 
