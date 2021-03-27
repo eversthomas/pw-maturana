@@ -18,20 +18,19 @@
 * ProcessFileEdit | i often work direct in a browser - maybe you have to actualize the folderstructure in this module to work
 * repeater field
 
-## setup as a page
+## Site metainformation in a page
 
-You find a setup.php where you can define some fine variables. It's included before head.inc:
+Controle your site meta informations --> its goes right into your header <head>.
 
 ```php
 <?php
-/**
- * some site configurations
- * 
- */
-	$home	=	$pages->get("/"); // page url
-	$site_title = "MyHomepage"; // site title
-	$title = $page->title(); // page title
-	$body	=	$page->body; // full body
+
+	echo $pages->get('1030')->sitetitel; // global website title
+	echo $pages->get('/processwire/metainf/')->image->url; // favicon image
+	echo $pages->get('metainf')->author; // author
+	echo $pages->get('metainf')->metadescription;
+	echo $pages->get('metainf')->metakeywords;
+
 ?>
 ```
 
