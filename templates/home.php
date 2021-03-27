@@ -14,7 +14,7 @@
 			}
 		?>
 	<article>
-		<h2><?php echo $title; ?></h2>
+		<h2><?php echo $page->title; ?></h2>
 		<?php echo $page->pagebody; ?>
 	</article>
 </main>
